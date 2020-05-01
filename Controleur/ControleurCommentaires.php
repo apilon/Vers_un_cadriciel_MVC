@@ -33,13 +33,14 @@ class ControleurCommentaires extends Controleur {
                 $commentaire['prive'] = $this->requete->getParametre('prive') == 'on' ? 1 : 0;
                 // Ajouter le commentaire à l'aide du modèle
                 $this->commentaire->setCommentaire($commentaire);
-                // Éliminer un code d'erreur éventuel
-                if ($this->requete->getSession()->existeAttribut('erreur')) {
-                    $this->requete->getsession()->setAttribut('erreur', '');
-                }
-                //Recharger la page pour mettre à jour la liste des commentaires associés
-                $this->rediriger('Articles', 'lire/' . $commentaire['article_id']);
             }
+            // Éliminer un code d'erreur éventuel
+            if ($this->requete->getSession()->existeAttribut('erreur')) {
+                $this->requete->getsession()->setAttribut('erreur', '');
+            }
+
+            //Recharger la page pour mettre à jour la liste des commentaires associés
+            $this->rediriger('Articles', 'lire/' . $commentaire['article_id']);
         } else {
             //Recharger la page avec une erreur près du courriel
             $this->requete->getSession()->setAttribut('erreur', 'courriel');

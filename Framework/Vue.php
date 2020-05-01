@@ -47,7 +47,8 @@ class Vue {
         // Génération du gabarit commun utilisant la partie spécifique
         $vue = $this->genererFichier('Vue/gabarit.php',
                 array('titre' => $this->titre, 'contenu' => $contenu,
-                    'racineWeb' => $racineWeb));
+                    'racineWeb' => $racineWeb,
+                    'message' => $donnees['message']));
         // Renvoi de la vue générée au navigateur
         echo $vue;
     }
