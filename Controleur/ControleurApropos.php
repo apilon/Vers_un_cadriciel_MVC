@@ -1,5 +1,6 @@
 <?php
 
+require_once 'Framework/Configuration.php';
 require_once 'Framework/Controleur.php';
 
 class ControleurApropos extends Controleur {
@@ -7,4 +8,5 @@ class ControleurApropos extends Controleur {
     public function index() {
         $this->genererVue();
     }
+    
 }

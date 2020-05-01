@@ -16,6 +16,14 @@
         <li>Cette version n'offre pas encore la gestion des auteurs. Il
             n'y a qu'un seul auteur pour l'instant. <br>
         </li>
+        <li>
+            Pour fin de démonstration, cette version offre la possibilité de changer de contrôleur d'accueil.<br/>
+            L'accueil présente alors plutôt la liste de tous les commentaires à l'accueil, avec un lien menant à l'article associé.<br/>
+            Cela peut vous être utile si vous désirez présenter à l'accueil le côté n de la relation 1 à n pour votre application.
+            <form action="commentaires" method="post">
+                <input type="submit" value="Changer de controleur d'accueil">
+            </form>
+        </li>
     </ul>
     <li>On y retrouve un lien pour créer un nouvel article :</li>
     <ul>

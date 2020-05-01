@@ -28,12 +28,8 @@
             </header>
             <?php
             // Vérifier s'il y a un message d'avertissement à afficher
-            if ($this->requete->getSession()->existeAttribut("message")) {
-                if ($this->requete->getSession()->getAttribut("message") !== '') {
-                    $message = $this->requete->getSession()->getAttribut("message");
+            if (isset($message) and $message != '') {
                     echo '<p class="erreur">' . $message . '</p><br/>';
-                    $this->requete->getSession()->setAttribut('message', ''); // Le message n'est affiché qu'une seule fois
-                }
             }
             ?>
             <div id="contenu">

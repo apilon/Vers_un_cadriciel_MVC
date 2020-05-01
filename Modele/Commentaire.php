@@ -12,9 +12,9 @@ class Commentaire extends Modele {
     // Renvoie la liste des commentaires associés à un article
     public function getCommentaires($idArticle = NULL) {
         if ($idArticle == NULL) {
-            $sql = 'select * from Commentaires';
+            $sql = 'select * from commentaires';
         } else {
-            $sql = 'select * from Commentaires'
+            $sql = 'select * from commentaires'
                     . ' where article_id = ?';
         }
         $commentaires = $this->executerRequete($sql, [$idArticle]);
@@ -23,7 +23,7 @@ class Commentaire extends Modele {
 
 // Renvoie un commentaire spécifique
     public function getCommentaire($id) {
-        $sql = 'select * from Commentaires'
+        $sql = 'select * from commentaires'
                 . ' where id = ?';
         $commentaire = $this->executerRequete($sql, [$id]);
         if ($commentaire->rowCount() == 1) {
@@ -35,7 +35,7 @@ class Commentaire extends Modele {
 
 // Supprime un commentaire
     public function deleteCommentaire($id) {
-        $sql = 'UPDATE Commentaires'
+        $sql = 'UPDATE commentaires'
                 . ' SET efface = 1'
                 . ' WHERE id = ?';
         $result = $this->executerRequete($sql, [$id]);
@@ -44,7 +44,7 @@ class Commentaire extends Modele {
 
     // Réactive un commentaire
     public function restoreCommentaire($id) {
-        $sql = 'UPDATE Commentaires'
+        $sql = 'UPDATE commentaires'
                 . ' SET efface = 0'
                 . ' WHERE id = ?';
         $result = $this->executerRequete($sql, [$id]);

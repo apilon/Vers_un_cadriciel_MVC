@@ -14,7 +14,7 @@ abstract class Controleur {
 
     /** Action à réaliser */
     private $action;
-    
+
     /** Requête entrante */
     protected $requete;
 
@@ -23,8 +23,7 @@ abstract class Controleur {
      * 
      * @param Requete $requete Requete entrante
      */
-    public function setRequete(Requete $requete)
-    {
+    public function setRequete(Requete $requete) {
         $this->requete = $requete;
     }
 
@@ -34,13 +33,11 @@ abstract class Controleur {
      * 
      * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
      */
-    public function executerAction($action)
-    {
+    public function executerAction($action) {
         if (method_exists($this, $action)) {
             $this->action = $action;
             $this->{$this->action}();
-        }
-        else {
+        } else {
             $classeControleur = get_class($this);
             throw new Exception("Action '$action' non définie dans la classe $classeControleur");
         }
@@ -57,27 +54,30 @@ abstract class Controleur {
      * 
      * @param array $donneesVue Données nécessaires pour la génération de la vue
      */
-    protected function genererVue($donneesVue = array())
-    {
+    protected function genererVue($donneesVue = array()) {
         // Détermination du nom du fichier vue à partir du nom du contrôleur actuel
         $classeControleur = get_class($this);
         $controleur = str_replace("Controleur", "", $classeControleur);
-        
+
         // Instanciation et génération de la vueF
         $vue = new Vue($this->action, $controleur);
         $vue->generer($donneesVue);
     }
-    
+
     /**
      * Effectue une redirection vers un contrôleur et une action spécifiques
      * 
      * @param string $controleur Contrôleur
      * @param type $action Action Action
      */
-    protected function rediriger($controleur, $action = null) {
+    protected function rediriger($controleur = null, $action = null) {
         $racineWeb = Configuration::get("racineWeb", "/");
         // Redirection vers l'URL /racine_site/controleur/action
-        header("Location:" . $racineWeb . $controleur . "/" . $action);
+        if ($controleur != null) {
+            header("Location:" . $racineWeb . $controleur . "/" . $action);
+        } else {
+            header("Location:" . $racineWeb);
+        }
     }
 
 }
