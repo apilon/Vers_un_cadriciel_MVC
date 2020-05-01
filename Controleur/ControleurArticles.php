@@ -36,7 +36,7 @@ class ControleurArticles extends Controleur {
 // Enregistre le nouvel article et retourne à la liste des articles
     public function nouvelArticle() {
         if ($this->requete->getSession()->getAttribut("env") == 'prod') {
-            $this->requete->getSession()->setAttribut("message") = "Ajouter un article n'est pas permis en démonstration";
+            $this->requete->getSession()->setAttribut("message", "Ajouter un article n'est pas permis en démonstration");
         } else {
             $article['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
             $article['titre'] = $this->requete->getParametre('titre');
@@ -58,7 +58,7 @@ class ControleurArticles extends Controleur {
 // Enregistre l'article modifié et retourne à la liste des articles
     public function miseAJour() {
         if ($this->requete->getSession()->getAttribut("env") == 'prod') {
-            $this->requete->getSession()->setAttribut("message") = "Modifier un article n'est pas permis en démonstration";
+            $this->requete->getSession()->setAttribut("message", "Modifier un article n'est pas permis en démonstration");
         } else {
             $article['id'] = $this->requete->getParametreId('id');
             $article['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');

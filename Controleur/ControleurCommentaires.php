@@ -25,7 +25,7 @@ class ControleurCommentaires extends Controleur {
         $validation_courriel = filter_var($commentaire['auteur'], FILTER_VALIDATE_EMAIL);
         if ($validation_courriel) {
             if ($this->requete->getSession()->getAttribut("env") == 'prod') {
-                $this->requete->getSession()->setAttribut("message") = "Ajouter un commentaire n'est pas permis en démonstration";
+                $this->requete->getSession()->setAttribut("message", "Ajouter un commentaire n'est pas permis en démonstration");
             } else {
                 $commentaire['titre'] = $this->requete->getParametre('titre');
                 $commentaire['texte'] = $this->requete->getParametre('texte');
