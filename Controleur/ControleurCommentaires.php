@@ -30,7 +30,7 @@ class ControleurCommentaires extends Controleur {
                 $commentaire['titre'] = $this->requete->getParametre('titre');
                 $commentaire['texte'] = $this->requete->getParametre('texte');
                 // Ajuster la valeur de la case à cocher
-                $commentaire['prive'] = $this->requete->getParametre('prive') == 'on' ? 1 : 0;
+                $commentaire['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;
                 // Ajouter le commentaire à l'aide du modèle
                 $this->commentaire->setCommentaire($commentaire);
             }
